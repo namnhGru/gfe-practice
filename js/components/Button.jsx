@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Button({children, clasName }) {
+export default function Button({children, className }) {
     return <button className={`
-        ${clasName}
+        ${className}
         flex items-center justify-center 
         rounded-sm 
         p-[0.625em]
