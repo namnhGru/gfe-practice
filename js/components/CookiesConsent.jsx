@@ -58,10 +58,8 @@ export default function CookiesConsent() {
 
     return (
         <>
-            <CookiesConsentContext.Provider value={{ cookies, setCookies, saveCookies, handleDeclineAll, handleAcceptAll }}>
-                {isShownBanner && <CookiesBanner 
-                                    showCookiesManage={showCookiesManage} 
-                                    showCookiesBanner={showCookiesBanner} />}
+            <CookiesConsentContext.Provider value={{ cookies, setCookies, saveCookies, handleDeclineAll, handleAcceptAll, showCookiesManage }}>
+                {isShownBanner && <CookiesBanner/>}
                 {isShownBanner && isShownMessage && <CookiesManage />}
             </CookiesConsentContext.Provider>
         </>
