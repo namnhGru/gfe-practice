@@ -20,6 +20,8 @@ export default function CookiesConsent() {
 
     function saveCookies(cookie) {
         localStorage.setItem('cookie-consent', JSON.stringify(cookie))
+        setIsShownBanner(false)
+        setIsShownMessage(false)
     }
 
     function handleDeclineAll() {
