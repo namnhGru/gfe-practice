@@ -1,7 +1,9 @@
 export default function Modal({children}) {
     return (
         <>
-            {children}
+            <dialog open>
+                {children}
+            </dialog>
         </>
     )
 }
