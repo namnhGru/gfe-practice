@@ -6,7 +6,7 @@ export default function Modal({children, center}) {
                         ? "bg-black/50"
                         : ""
     return (
-        <div className={`fixed inset-0 ${backdrop}`}>
+        <div className={`button-shadow fixed inset-0 ${backdrop}`}>
             <dialog open className={`bg-white ${position}`} onClick={(e) => e.stopPropagation()}>
                 {children}
             </dialog>
