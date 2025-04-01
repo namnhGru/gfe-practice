@@ -1,6 +1,9 @@
 import { useState } from "react";
 import NavLinkList from "./NavLinkList";
 import NavMobileMenu from "./NavMobileMenu";
+import logo from "../../../img/stylenest.svg"
+import hamburger from "../../../img/Hamburger.svg"
+import cart from "../../../img/Cart.svg"
 
 export default function NavBar() {
     const [isShowMenu, setIsShowMenu] = useState(false)
@@ -16,17 +19,17 @@ export default function NavBar() {
         <>
             <div className="flex items-center justify-between lg:gap-[6.4375em] lg:mt-[1em] lg:pt-[1em] lg:px-[7em] py-[1.125em] mt-[1em] px-[1em] md:px-[2em]">
                 <div className="brand-section">
-                    <img src="img\stylenest.svg"/>
+                    <img src={logo}/>
                 </div>
                 <div className="link-section lg:justify-start lg:grow lg:gap-[2em] hidden lg:flex">
                     <NavLinkList />
                 </div>
                 <div className={`cart-section flex gap-[1em] ${isShowMenu && "hidden"}`}>
                     <button>
-                        <img src="img\Cart.svg"/>
+                        <img src={cart}/>
                     </button>
                     <button className="lg:hidden"  onClick={() => toggleMenu()}>
-                        <img src="img\Hamburger.svg"/>
+                        <img src={hamburger}/>
                     </button>
                 </div>
             </div>
