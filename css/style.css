@@ -5,7 +5,7 @@
 }
 
 html,body {
-  height: 100%;
+  height: auto;
   width: 100%;
 }
 
@@ -20,6 +20,7 @@ body {
   text-rendering: optimizeLegibility;
   background-image: linear-gradient(to bottom, #f9fafb, #d2d6db);
   position: relative;
+  background-attachment: fixed;
 }
 
 .button-shadow button {
