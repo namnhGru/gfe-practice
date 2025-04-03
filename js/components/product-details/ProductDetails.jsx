@@ -3,19 +3,20 @@ import ProductGallery from "./ProductGallery";
 import checkFill from "../../../img/product-details/check-fill.svg"
 import minus from "../../../img/product-details/minus.svg"
 import plus from "../../../img/product-details/plus.svg"
-import { normalizedProducts, desaturateColor, starRating } from "../../helpers/products-helper.jsx"
+import collapse from "../../../img/product-details/collapse.svg"
+import { normalizedProducts, desaturateColor, starRating, productInfoFeed } from "../../helpers/products-helper.jsx"
 
 const ProductDetailsContext = createContext(null)
 
 export default function ProductDetails() {
     const [userChoice, setUserChoice] = useState({ color: "", size: "", quantity: 0 })
     const {product_id, name, description, color, image_url, size, list_price, sale_price, discount_percentage, rating} = normalizedProducts[2]
-    console.log(normalizedProducts[6])
-
+    
     const reviewQuote = rating.length ? `See all ${rating.length} reviews` : `No reviews yet. Be the first`
     const averageReview = rating.length ? `${rating.reduce((a, b) => a + b, 0) / rating.length}` : 0
     const star = starRating(averageReview)
     const quantity = userChoice.quantity < 10 ? `0${userChoice.quantity}` : userChoice.quantity
+    const productInfo = productInfoFeed(product_id)
 
 
     function handleSizeChange(size) {
@@ -125,7 +126,26 @@ export default function ProductDetails() {
                         <button className="flex justify-center items-center gap-1.5 w-full bg-indigo-700 px-5 py-3 rounded text-white mt-[2rem]">Add to Cart</button>
                     </div>
                 </div>
-                <div className="detail-section__accordion">Accordion Here</div>
+                <div className="detail-section__accordion flex flex-col justify-between mt-[2.5rem]">
+                    {
+                        productInfo.map(prod => {
+                            return  <div className="flex flex-row">
+                                        <div>
+                                            <h3 className="font-medium text-neutral-900 text-[1.125rem]/[1.75rem]">{prod.title}</h3>
+                                            <ul className="font-normal text-[1rem]/[1.5rem] text-neutral-600 text-[#525252] list-disc px-[1.5rem] mb-[2rem]">
+                                                {prod.description.map(des => (
+                                                    <li>{des}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <button className="w-[3rem]"><img src={collapse} alt="" /></button>
+
+                                        </div>
+                                    </div>
+                        })
+                    }
+                </div>
             </div>
         </div>
   ) 

@@ -158,6 +158,9 @@ function starRating(score=3) {
     return starArray.map((starSVG, idx) => <img key={idx} src={starSVG} alt="" />)
 }
 
-  
+function productInfoFeed(product_id) {
+    return productInfo
+        .filter(product => product.product_id === product_id)
+}
 
-export {normalizedProducts, desaturateColor, starRating}
+export {normalizedProducts, desaturateColor, starRating, productInfoFeed}
