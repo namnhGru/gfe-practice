@@ -68,7 +68,8 @@ function normalizeData(products) {
                                 ...resultInventory
                             }
                         }
-                    })               
+                    })       
+    console.log(resultData)
     return resultData
 }
 
@@ -138,7 +139,7 @@ function hslToRgb(h, s, l){
 }
 
 function starRating(score=3) {
-    const starArray = []
+    let starArray = []
     if (score === 0) {
         starArray = [emptyStar,emptyStar,emptyStar,emptyStar,emptyStar]
     } else {

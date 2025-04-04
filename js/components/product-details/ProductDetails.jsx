@@ -8,9 +8,14 @@ import ProductAccordion from "./ProductAccordion.jsx";
 const ProductDetailsContext = createContext(null)
 
 export default function ProductDetails() {
-    const {product_id, name, description, color, image_url, size, list_price, sale_price, discount_percentage, rating} = normalizedProducts[6]
+    const {product_id, name, description, color, image_url, size, list_price, sale_price, discount_percentage, rating, inventory} = normalizedProducts[6]
+    console.log(inventory[color[0]].null )
     
-    const [userChoice, setUserChoice] = useState({ color: "", size: "", quantity: 0 })
+    const [userChoice, setUserChoice] = useState({ 
+        color: inventory[color[0]].null ? color[0] : "", 
+        size: size[0], 
+        quantity: 0 
+    })
     const [heroImage, setHeroImage] = useState(image_url[0])
 
     function handleSizeChange(size) {
@@ -37,8 +42,8 @@ export default function ProductDetails() {
     }
 
     return (
-        <ProductDetailsContext.Provider value={{product_id, name, description, color, image_url, size, list_price, sale_price, discount_percentage, rating, heroImage, setHeroImage, userChoice, handleSizeChange, handleColorChange, handleQuantityChange }}>
-            <div className="bg-white p-[1em] m-[1em] min-h-screen flex flex-col items-center gap-[3em]">
+        <ProductDetailsContext.Provider value={{product_id, name, description, color, image_url, size, list_price, sale_price, discount_percentage, rating, inventory, heroImage, setHeroImage, userChoice, handleSizeChange, handleColorChange, handleQuantityChange }}>
+            <div className="bg-white p-[1em] m-[1em] min-h-screen flex flex-col gap-[3em]">
                 <ProductGallery />
                 <ProductStatic />
                 <ProductChoice />
